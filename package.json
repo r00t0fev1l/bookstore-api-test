@@ -1,0 +1,21 @@
+{
+  "name": "bookstore-qa",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "test": "jest"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/plugin-transform-modules-commonjs": "^7.19.6",
+    "@babel/preset-env": "^7.20.2",
+    "babel": "^6.23.0",
+    "babel-jest": "^29.3.1",
+    "jest": "^29.3.1"
+  },
+  "dependencies": {
+    "supertest": "^6.3.3"
+  }
+}
