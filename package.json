@@ -13,9 +13,11 @@
     "@babel/preset-env": "^7.20.2",
     "babel": "^6.23.0",
     "babel-jest": "^29.3.1",
-    "jest": "^29.3.1"
+    "jest": "^29.3.1",
+    "jest-json-schema-extended": "^1.0.1"
   },
   "dependencies": {
+    "jest-json-schema": "^6.1.0",
     "supertest": "^6.3.3"
   }
 }
