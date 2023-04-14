@@ -28,7 +28,7 @@ const user = {
     },
 
     deleteUser: (payload) => {
-        const request =  supertest(url)
+        const request = supertest(url)
             .delete('/Account/v1/User/' + payload)
             .set('Accept', 'application/json')
 
@@ -40,7 +40,7 @@ const user = {
     },
 
     getUser: (payload) => {
-        const request =  supertest(url)
+        const request = supertest(url)
             .get('/Account/v1/User/' + payload)
             .set('Accept', 'application/json');
 
@@ -52,7 +52,7 @@ const user = {
     },
 
     generateToken: (payload) => {
-        const request =  supertest(url)
+        const request = supertest(url)
             .post('/Account/v1/GenerateToken')
             .set('Accept', 'application/json')
 
@@ -61,7 +61,80 @@ const user = {
         }
 
         return request.send(payload);
-    }
+    },
+
+    addBooks: (collectionOfIsbns, userId, bearer) => {
+        const request = supertest(url)
+            .post('/Bookstore/v1/Books')
+            .set('Accept', 'application/json')
+
+        if (token) {
+            request.set('Authorization', `Basic ${token}`)
+        }
+
+        return request.send({
+                userId,
+                collectionOfIsbns,
+            },
+        );
+    },
+
+    deleteBook: (isbn, userId) => {
+        const request = supertest(url)
+            .delete('/BookStore/v1/Book')
+            .set('Accept', 'application/json')
+
+        if (token) {
+            request.set('Authorization', `Basic ${token}`)
+        }
+
+        return request.send({
+                userId,
+                isbn
+            },
+        );
+    },
+
+    replaceBook: (isbn, newIsbn, userId) => {
+        const request = supertest(url)
+            .put('/BookStore/v1/Books/' + isbn)
+            .set('Accept', 'application/json')
+
+        if (token) {
+            request.set('Authorization', `Basic ${token}`)
+        }
+
+        return request.send({
+                userId,
+                isbn: newIsbn
+            },
+        );
+    },
+
+    getBooks: () => {
+        const request = supertest(url)
+            .get('/Bookstore/v1/Books/')
+            .set('Accept', 'application/json')
+
+        if (token) {
+            request.set('Authorization', `Basic ${token}`)
+        }
+
+        return request.send();
+    },
+
+    getBook: (isbn) => {
+        const request = supertest(url)
+            .get('/Bookstore/v1/Book?ISBN=' +isbn)
+            .set('Accept', 'application/json')
+
+        if (token) {
+            request.set('Authorization', `Basic ${token}`)
+        }
+
+        return request.send();
+    },
+
 
 }
 
